@@ -207,7 +207,7 @@ const summary = ref({
 async function fetchSummaryStats() {
   try {
     // const res = await fetch('http://localhost:3000/api/lap-summary');
-    const res = await fetch('https://tracker.gvtsy.com/api/summary');
+    const res = await fetch('https://tracker.gvtsy.com/api/lap-summary');
     const data = await res.json();
     summary.value.totalSessions = data.totalSessions;
     summary.value.uniqueTracks = data.uniqueTracks;
@@ -234,7 +234,7 @@ async function setWatchPath() {
 
   try {
     // const res = await fetch('http://localhost:3000/api/set-watch-path', {
-    const res = await fetch('https://tracker.gvtsy.com/api/best-laps', {
+    const res = await fetch('https://tracker.gvtsy.com/api/set-watch-path', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ folderPath: watchFolderPath.value })
