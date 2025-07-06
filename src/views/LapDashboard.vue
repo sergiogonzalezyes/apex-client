@@ -161,7 +161,8 @@ function trackAll() {
 
 async function sendLapsToServer(sessionData) {
   try {
-    const res = await fetch('http://localhost:3000/api/laps', {
+    // const res = await fetch('http://localhost:3000/api/laps', {
+    const res = await fetch('https://tracker.gvtsy.com/api/laps', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sessions: sessionData }),
@@ -175,7 +176,8 @@ async function sendLapsToServer(sessionData) {
 
 async function fetchBestLaps() {
   try {
-    const res = await fetch('http://localhost:3000/api/best-laps');
+    // const res = await fetch('http://localhost:3000/api/best-laps');
+    const res = await fetch('https://tracker.gvtsy.com/api/best-laps');
     const data = await res.json();
     bestLaps.value = data;
   } catch (err) {
@@ -204,7 +206,8 @@ const summary = ref({
 
 async function fetchSummaryStats() {
   try {
-    const res = await fetch('http://localhost:3000/api/lap-summary');
+    // const res = await fetch('http://localhost:3000/api/lap-summary');
+    const res = await fetch('https://tracker.gvtsy.com/api/summary');
     const data = await res.json();
     summary.value.totalSessions = data.totalSessions;
     summary.value.uniqueTracks = data.uniqueTracks;
@@ -230,7 +233,8 @@ async function setWatchPath() {
   }
 
   try {
-    const res = await fetch('http://localhost:3000/api/set-watch-path', {
+    // const res = await fetch('http://localhost:3000/api/set-watch-path', {
+    const res = await fetch('https://tracker.gvtsy.com/api/best-laps', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ folderPath: watchFolderPath.value })
